@@ -39,7 +39,7 @@ npm install
 # Install frontend dependencies
 npm install --prefix frontend
 
-#**Running the App**:
+#Running the App:
 
 Start the backend:
   npm run dev
