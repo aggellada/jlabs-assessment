@@ -38,6 +38,7 @@ npm install
 npm install --prefix frontend
 
 Running the App:
+
 Start the backend:
   npm run dev
 
