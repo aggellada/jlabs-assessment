@@ -20,7 +20,8 @@ Backend:
 - PostgreSQL (via Neon)
 ---
 
-Setup environment variables
+Setup environment variables:
+
 Create a .env file in the root directory with the details I sent through forms.clickup:
 
 # JWT Secret
