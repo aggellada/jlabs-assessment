@@ -8,7 +8,7 @@ export const useAuthStore = create((set, get) => ({
   isCreatingUser: false,
 
   createUser: async (formData) => {
-    set({ isCreatingUser: false });
+    set({ isCreatingUser: true });
     try {
       const res = await axiosInstance.post("/api/auth/signup", formData);
       set({ authUser: res.data.data[0] });
@@ -17,7 +17,7 @@ export const useAuthStore = create((set, get) => ({
       console.log("error in createUser store", error);
       toast.error(error.response.data.message);
     } finally {
-      set({ isCreatingUser: true });
+      set({ isCreatingUser: false });
     }
   },
 

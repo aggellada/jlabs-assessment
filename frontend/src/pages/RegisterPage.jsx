@@ -1,29 +1,45 @@
 import React, { useState } from "react";
 import { useAuthStore } from "../../store/useAuthStore";
 import { Link } from "react-router-dom";
-import { Loader2 } from "lucide-react";
+import { Loader2, UserPlus } from "lucide-react";
 
-function LoginPage() {
+function RegisterPage() {
   const [formData, setFormData] = useState({
+    name: "",
     email: "",
     password: "",
   });
 
-  const { login, isLoggingIn } = useAuthStore();
+  const { createUser, isCreatingUser } = useAuthStore();
 
   const formSubmit = (e) => {
     e.preventDefault();
-    login(formData);
+    createUser(formData);
   };
 
   return (
     <div className="container max-w-lg w-full h-full mx-auto flex justify-center items-center pt-20">
-      <form className="flex w-full h-fit flex-col bg-gray-900 p-18 rounded-xl" onSubmit={formSubmit}>
-        <div className="pb-8 flex flex-col gap-2">
-          <h1 className="font-bold text-4xl">Login</h1>
-          <span className="font-light text-md">to get started</span>
+      <form className="flex w-full flex-col bg-gray-900 p-10 md:p-20 rounded-xl" onSubmit={formSubmit}>
+        <div className="flex mb-8 pb-4 border-b-1 border-gray-700 items-center justify-between">
+          <div className="flex flex-col gap-2 ">
+            <h1 className="font-bold text-3xl">Sign up</h1>
+            <span className="font-light text-md">Create an account and registerr</span>
+          </div>
+          <UserPlus className="size-15" />
         </div>
-        <div className="flex flex-col pb-8 gap-2">
+        <div className="flex flex-col pb-4 gap-2">
+          <label htmlFor="name">Name</label>
+          <input
+            type="text"
+            className="bg-gray-600 p-1 rounded-md"
+            name="name"
+            onChange={(e) =>
+              setFormData((prev) => {
+                return { ...prev, name: e.target.value };
+              })
+            }
+            placeholder="John Doe"
+          />
           <label htmlFor="name">Email</label>
           <input
             type="text"
@@ -50,18 +66,18 @@ function LoginPage() {
           />
         </div>
         <div className="flex flex-col text-center gap-2">
-          <button type="submit" className="bg-blue-950 rounded-md p-2">
-            {isLoggingIn ? (
+          <button type="submit" className="bg-blue-950 rounded-md p-2 hover:cursor-pointer">
+            {isCreatingUser ? (
               <div className="flex gap-2 justify-center">
                 <Loader2 className="animate-spin" />
-                <span>Logging in</span>
+                <span>Signing up</span>
               </div>
             ) : (
-              "Log in"
+              "Sign up"
             )}
           </button>
           <span>
-            Don't have an account? <Link to="/register">Sign up</Link>
+            Already have an account? <Link to="/login">Log in</Link>
           </span>
         </div>
       </form>
@@ -69,4 +85,4 @@ function LoginPage() {
   );
 }
 
-export default LoginPage;
+export default RegisterPage;

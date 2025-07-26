@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import LoginPage from "./components/LoginPage";
-import HomePage from "./components/HomePage";
-import RegisterPage from "./components/RegisterPage";
+import { Navigate, Route, Routes } from "react-router-dom";
+import LoginPage from "./pages/LoginPage";
+import HomePage from "./pages/HomePage";
+import RegisterPage from "./pages/RegisterPage";
 import { useAuthStore } from "../store/useAuthStore";
 import Navbar from "./components/Navbar";
 
@@ -12,9 +12,9 @@ function App() {
     <div className="h-screen w-full bg-gray-950 text-white">
       <Navbar />
       <Routes>
-        <Route path="/login" element={!authUser ? <LoginPage /> : <HomePage />} />
+        <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
         <Route path="/" element={!authUser ? <LoginPage /> : <HomePage />} />
-        <Route path="/register" element={!authUser ? <RegisterPage /> : <HomePage />} />
+        <Route path="/register" element={!authUser ? <RegisterPage /> : <Navigate to="/" />} />
       </Routes>
     </div>
   );
