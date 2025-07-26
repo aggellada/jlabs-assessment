@@ -20,15 +20,17 @@ Backend:
 - PostgreSQL (via Neon)
 ---
 
-Setup environment variables:
+#Setup environment variables:
 
 Create a .env file in the root directory with the details I sent through forms.clickup:
 
-# JWT Secret
+JWT Secret:
 TOKEN_KEY_SECRET= your_generated_secret_key
-# Database connection string (Neon)
+
+Database connection string (Neon):
 CONNECTION_STRING= your_neon_postgres_connection_url
-# PORT
+
+PORT:
 PORT = 5001
 
 # Install backend dependencies
@@ -37,7 +39,7 @@ npm install
 # Install frontend dependencies
 npm install --prefix frontend
 
-Running the App:
+#Running the App:
 
 Start the backend:
   npm run dev
@@ -46,7 +48,8 @@ Start the Frontend:
   cd frontend
   npm run dev
 
-Features Checklist (per requirements):
+#Features Checklist (per requirements):
+
    Register with name, email, and password
    Login with email and password
    Validate credentials against the database
@@ -57,6 +60,7 @@ Features Checklist (per requirements):
    Web app built with ReactJS
    PostgreSQL database (hosted on Neon)
 
-External Libraries
+#External Libraries
+
 All dependencies are listed in the root and frontend package.json files.
 
